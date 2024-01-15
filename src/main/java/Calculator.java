@@ -44,18 +44,23 @@ public class Calculator {
 
     public static int getPerson() {
         int person;
+        Scanner sc = new Scanner(System.in);
         while (true) {
-            Scanner sc = new Scanner(System.in);
-            person = sc.nextInt();
-            sc.nextLine();
-            if (person == 1) {
-                System.out.println("Нет смысла ничего считать и делить\nНа сколько человек необходимо разделить счет?");
+            if (sc.hasNextInt()) {
+                person = sc.nextInt();
+                sc.nextLine();
+                if (person == 1) {
+                    System.out.println("Нет смысла ничего считать и делить\nНа сколько человек необходимо разделить счет?");
+                }
+                if (person < 1) {
+                    System.out.println("некорректное значение для подсчёта\nНа сколько человек необходимо разделить счет?");
+                }
+                if (person > 1)
+                    break;
+            } else {
+                System.out.println("Неверный ввод, введите цифры");
+                sc.next();
             }
-            if (person < 1) {
-                System.out.println("некорректное значение для подсчёта\nНа сколько человек необходимо разделить счет?");
-            }
-            if (person > 1)
-                break;
         }
         return person;
     }
